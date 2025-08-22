@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Movement - Body-Based Healing Journey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage: #87A878;
+            --soft-sage: #A8C09A;
+            --ocean: #7BA7BC;
+            --soft-coral: #F4A09C;
+            --lavender: #B19CD9;
+            --cream: #FFF8E7;
+            --earth: #8B7355;
+            --deep-teal: #2C5F5F;
+            --warm-gray: #6B6B6B;
+            --pearl: #FAFAFA;
+            --gradient-calm: linear-gradient(135deg, #87A878 0%, #7BA7BC 100%);
+            --gradient-warm: linear-gradient(135deg, #F4A09C 0%, #B19CD9 100%);
+            --gradient-earth: linear-gradient(135deg, #A8C09A 0%, #8B7355 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #87A87815 0%, #7BA7BC15 100%);
+            min-height: 100vh;
+            color: var(--warm-gray);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating organic shapes */
+        .organic-shape {
+            position: fixed;
+            border-radius: 50% 40% 60% 30%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: breathe 15s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .shape1 {
+            width: 400px;
+            height: 400px;
+            background: var(--sage);
+            top: -200px;
+            left: -100px;
+            animation-duration: 20s;
+        }
+
+        .shape2 {
+            width: 300px;
+            height: 300px;
+            background: var(--ocean);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -7s;
+            animation-duration: 18s;
+        }
+
+        .shape3 {
+            width: 250px;
+            height: 250px;
+            background: var(--soft-coral);
+            top: 40%;
+            left: 60%;
+            animation-delay: -14s;
+        }
+
+        @keyframes breathe {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                border-radius: 50% 40% 60% 30%;
+            }
+            25% { 
+                transform: translate(20px, -30px) scale(1.1) rotate(90deg);
+                border-radius: 60% 50% 40% 30%;
+            }
+            50% { 
+                transform: translate(-20px, 20px) scale(0.95) rotate(180deg);
+                border-radius: 40% 60% 50% 30%;
+            }
+            75% { 
+                transform: translate(30px, 10px) scale(1.05) rotate(270deg);
+                border-radius: 50% 30% 60% 40%;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: gentleFade 1s ease;
+        }
+
+        @keyframes gentleFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--gradient-calm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--warm-gray);
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 0.875rem 2rem;
+            border-radius: 30px;
+            background: white;
+            border: 2px solid rgba(135, 168, 120, 0.2);
+            color: var(--warm-gray);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-color: var(--sage);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, rgba(135, 168, 120, 0.15) 0%, rgba(123, 167, 188, 0.15) 100%);
+            border-color: var(--sage);
+            color: var(--deep-teal);
+            box-shadow: 0 4px 20px rgba(135, 168, 120, 0.2);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            animation: fadeUp 0.6s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-calm);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: var(--deep-teal);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-calm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Nervous System States */
+        .states-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .state-card {
+            padding: 1.75rem;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .state-card.ventral {
+            background: linear-gradient(135deg, #87A87820 0%, #A8C09A20 100%);
+            border: 2px solid var(--soft-sage);
+        }
+
+        .state-card.sympathetic {
+            background: linear-gradient(135deg, #F4A09C20 0%, #FFA50020 100%);
+            border: 2px solid var(--soft-coral);
+        }
+
+        .state-card.dorsal {
+            background: linear-gradient(135deg, #7BA7BC20 0%, #5B788520 100%);
+            border: 2px solid var(--ocean);
+        }
+
+        .state-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .state-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .state-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .state-card.ventral h3 { color: var(--sage); }
+        .state-card.sympathetic h3 { color: #D88B83; }
+        .state-card.dorsal h3 { color: var(--ocean); }
+
+        .state-details {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        /* Movement Stations */
+        .stations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .station-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .station-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+        }
+
+        .station-header {
+            padding: 2rem;
+            background: var(--gradient-calm);
+            color: white;
+            position: relative;
+        }
+
+        .station-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .station-time {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .station-body {
+            padding: 2rem;
+        }
+
+        .station-body h4 {
+            color: var(--deep-teal);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .station-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .station-body li {
+            padding: 0.5rem 0;
+            color: var(--warm-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .station-body li::before {
+            content: '✓';
+            color: var(--sage);
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .try-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-warm);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .try-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Practice Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-calm);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Resource Links */
+        .resource-section {
+            background: linear-gradient(135deg, rgba(135, 168, 120, 0.05) 0%, rgba(123, 167, 188, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .resource-link {
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--warm-gray);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .resource-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            color: var(--deep-teal);
+        }
+
+        /* Integration Tips */
+        .tip-box {
+            background: linear-gradient(135deg, #FFF8E7 0%, #FFFAF0 100%);
+            border-left: 4px solid var(--soft-coral);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: var(--deep-teal);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            .nav-tabs { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .nav-tab { width: 250px; text-align: center; }
+            .modal-content { padding: 2rem; }
+        }
+
+        /* Loading animation */
+        .pulse-ring {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--sage);
+            animation: pulse-ring 1.5s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Organic Background Shapes -->
+    <div class="organic-shape shape1"></div>
+    <div class="organic-shape shape2"></div>
+    <div class="organic-shape shape3"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Mindful Movement Journey</h1>
+            <p class="subtitle">Body-Based Healing Through Somatic Awareness</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showPage(0)">
+                🧠 Understanding Your Nervous System
+            </button>
+            <button class="nav-tab" onclick="showPage(1)">
+                🌊 Movement Stations
+            </button>
+            <button class="nav-tab" onclick="showPage(2)">
+                🌟 Integration Guide
+            </button>
+        </div>
+
+        <!-- Page 1: Psychoeducation -->
+        <div class="page active" id="page0">
+            <!-- Polyvagal Theory -->
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">🌳</div>
+                    Your Nervous System: A Living Map
+                </h2>
+                <p style="color: var(--warm-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Your nervous system is constantly scanning for safety and danger, shifting between different states throughout the day. Understanding these states helps you recognize your body's wisdom and build capacity for regulation.
+                </p>
+                
+                <!-- Polyvagal Ladder Diagram -->
+                <div style="background: linear-gradient(135deg, rgba(135, 168, 120, 0.05) 0%, rgba(123, 167, 188, 0.05) 100%); padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
+                    <h3 style="text-align: center; color: var(--deep-teal); margin-bottom: 1.5rem;">The Autonomic Ladder</h3>
+                    
+                    <!-- Ventral Vagal - Top -->
+                    <div style="position: relative; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(135deg, #87A878 0%, #A8C09A 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(135, 168, 120, 0.3);">
+                            <h4 style="margin-bottom: 0.5rem;">🌱 VENTRAL VAGAL</h4>
+                            <p style="font-size: 0.9rem;">Social Engagement System</p>
+                            <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem;">Safe • Connected • Calm • Curious • Creative</p>
+                        </div>
+                        <div style="text-align: center; margin: 0.5rem 0;">
+                            <div style="width: 2px; height: 30px; background: var(--sage); margin: 0 auto; opacity: 0.5;"></div>
+                            <span style="color: var(--sage);">⬆⬇</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Sympathetic - Middle -->
+                    <div style="position: relative; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(135deg, #F4A09C 0%, #FFA500 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(244, 160, 156, 0.3);">
+                            <h4 style="margin-bottom: 0.5rem;">⚡ SYMPATHETIC</h4>
+                            <p style="font-size: 0.9rem;">Mobilization System</p>
+                            <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem;">Fight • Flight • Anxious • Overwhelmed • Reactive</p>
+                        </div>
+                        <div style="text-align: center; margin: 0.5rem 0;">
+                            <div style="width: 2px; height: 30px; background: var(--soft-coral); margin: 0 auto; opacity: 0.5;"></div>
+                            <span style="color: var(--soft-coral);">⬆⬇</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Dorsal Vagal - Bottom -->
+                    <div style="position: relative;">
+                        <div style="background: linear-gradient(135deg, #7BA7BC 0%, #5B7885 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(123, 167, 188, 0.3);">
+                            <h4 style="margin-bottom: 0.5rem;">🌙 DORSAL VAGAL</h4>
+                            <p style="font-size: 0.9rem;">Immobilization System</p>
+                            <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem;">Freeze • Collapse • Numb • Disconnected • Shut down</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box" style="margin-top: 1.5rem; background: white;">
+                        <p style="font-size: 0.95rem;"><strong>Remember:</strong> All states serve a purpose. Your nervous system is always trying to keep you safe.</p>
+                    </div>
+                </div>
+                
+                <div class="states-container">
+                    <div class="state-card ventral" onclick="expandState(this, 'ventral')">
+                        <h3>🌱 Explore Ventral <span class="pulse-ring"></span></h3>
+                        <div class="state-details">
+                            <strong>Signs You're Here:</strong>
+                            <p style="margin-top: 0.5rem;">• Easy breathing<br>• Soft facial muscles<br>• Playful or creative<br>• Able to connect</p>
+                        </div>
+                    </div>
+                    
+                    <div class="state-card sympathetic" onclick="expandState(this, 'sympathetic')">
+                        <h3>⚡ Explore Sympathetic</h3>
+                        <div class="state-details">
+                            <strong>Signs You're Here:</strong>
+                            <p style="margin-top: 0.5rem;">• Racing heart<br>• Tight muscles<br>• Can't sit still<br>• Ready to act</p>
+                        </div>
+                    </div>
+                    
+                    <div class="state-card dorsal" onclick="expandState(this, 'dorsal')">
+                        <h3>🌙 Explore Dorsal</h3>
+                        <div class="state-details">
+                            <strong>Signs You're Here:</strong>
+                            <p style="margin-top: 0.5rem;">• Feel heavy<br>• Hard to move<br>• Foggy thinking<br>• Want to hide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Window of Tolerance -->
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">🪟</div>
+                    Your Window of Tolerance
+                </h2>
+                
+                <!-- Interactive Window Visual -->
+                <div style="background: linear-gradient(135deg, rgba(135, 168, 120, 0.1) 0%, rgba(123, 167, 188, 0.1) 100%); padding: 2rem; border-radius: 16px; position: relative;">
+                    
+                    <!-- Window Frame Visual -->
+                    <div style="max-width: 600px; margin: 0 auto; position: relative;">
+                        <!-- Hyperarousal Zone -->
+                        <div style="background: linear-gradient(180deg, #F4A09C 0%, rgba(244, 160, 156, 0.3) 100%); padding: 1.5rem; border-radius: 12px 12px 0 0; text-align: center;">
+                            <h4 style="color: white; margin-bottom: 0.5rem;">⬆️ HYPERAROUSAL ZONE</h4>
+                            <p style="color: white; font-size: 0.9rem;">Panic • Racing thoughts • Hypervigilance • Overwhelm</p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                                <span style="background: rgba(255,255,255,0.3); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem;">Too Much</span>
+                                <span style="background: rgba(255,255,255,0.3); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem;">Too Fast</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Optimal Zone - The Window -->
+                        <div style="background: linear-gradient(180deg, #87A878 0%, #7BA7BC 100%); padding: 2rem; position: relative; box-shadow: inset 0 0 30px rgba(255,255,255,0.3);">
+                            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                <h4 style="color: var(--deep-teal); text-align: center; margin-bottom: 1rem;">✨ WINDOW OF TOLERANCE ✨</h4>
+                                <p style="color: var(--sage); text-align: center; font-weight: 600; margin-bottom: 1rem;">Optimal Arousal Zone</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+                                    <div>
+                                        <p style="color: var(--warm-gray); font-size: 0.9rem;">• Calm & Alert</p>
+                                        <p style="color: var(--warm-gray); font-size: 0.9rem;">• Able to think clearly</p>
+                                        <p style="color: var(--warm-gray); font-size: 0.9rem;">• Can feel emotions</p>
+                                    </div>
+                                    <div>
+                                        <p style="color: var(--warm-gray); font-size: 0.9rem;">• Present & Engaged</p>
+                                        <p style="color: var(--warm-gray); font-size: 0.9rem;">• Flexible responses</p>
+                                        <p style="color: var(--warm-gray); font-size: 0.9rem;">• Connected to self</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Hypoarousal Zone -->
+                        <div style="background: linear-gradient(180deg, rgba(123, 167, 188, 0.3) 0%, #7BA7BC 100%); padding: 1.5rem; border-radius: 0 0 12px 12px; text-align: center;">
+                            <h4 style="color: white; margin-bottom: 0.5rem;">⬇️ HYPOAROUSAL ZONE</h4>
+                            <p style="color: white; font-size: 0.9rem;">Numb • Disconnected • Empty • Collapsed</p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                                <span style="background: rgba(255,255,255,0.3); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem;">Too Little</span>
+                                <span style="background: rgba(255,255,255,0.3); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem;">Too Slow</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box" style="margin-top: 2rem;">
+                        <h4>🎯 Movement as Medicine</h4>
+                        <p>Different movements can help you return to your window:</p>
+                        <ul style="margin-top: 0.75rem; line-height: 1.8;">
+                            <li>• <strong>From Hyperarousal:</strong> Slow, grounding movements, longer exhales</li>
+                            <li>• <strong>From Hypoarousal:</strong> Gentle activation, bilateral stimulation</li>
+                            <li>• <strong>Expanding the Window:</strong> Pendulation between states builds resilience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Movement Modalities -->
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">💃</div>
+                    Evidence-Based Movement Modalities
+                </h2>
+                <p style="color: var(--warm-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Research shows that specific movement interventions can significantly support healing and nervous system regulation. Here are key approaches and their therapeutic mechanisms.
+                </p>
+                
+                <!-- Dance Movement Therapy -->
+                <div style="background: linear-gradient(135deg, rgba(177, 156, 217, 0.1) 0%, rgba(244, 160, 156, 0.1) 100%); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--deep-teal); margin-bottom: 1rem;">🎭 Dance/Movement Therapy (DMT)</h3>
+                    <p style="color: var(--warm-gray); line-height: 1.8; margin-bottom: 1rem;">
+                        DMT uses movement as the primary means of assessment and intervention. Research shows significant positive effects on body image, emotional expression, and social skills.
+                    </p>
+                    
+                    <h4 style="color: var(--lavender); margin-bottom: 0.75rem;">Evidence-Based DMT Interventions:</h4>
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="background: white; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: var(--deep-teal);">Mirroring (Attunement)</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.9rem; margin-top: 0.5rem;">Therapist reflects client's movements to build rapport and validation. Strengthens therapeutic alliance and self-awareness.</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: var(--deep-teal);">Body Action & Shape Analysis</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.9rem; margin-top: 0.5rem;">Exploring effort qualities (light/strong, quick/sustained) to expand emotional range and expression.</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: var(--deep-teal);">Authentic Movement</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.9rem; margin-top: 0.5rem;">Moving with eyes closed from internal impulse. Builds interoception and self-trust.</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: var(--deep-teal);">Rhythmic Group Activities</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.9rem; margin-top: 0.5rem;">Synchronized movement to build co-regulation and social connection. Particularly effective for trauma.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.5); border-radius: 8px;">
+                        <p style="color: var(--warm-gray); font-size: 0.9rem; font-style: italic;">
+                            <strong>Research Finding:</strong> "DMT interventions showing highest effectiveness include mirroring for building therapeutic alliance, authentic movement for self-awareness, and structured improvisation for emotional expression" (Koch et al., 2014).
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Somatic Experiencing -->
+                <div style="background: linear-gradient(135deg, rgba(135, 168, 120, 0.1) 0%, rgba(123, 167, 188, 0.1) 100%); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--deep-teal); margin-bottom: 1rem;">🌊 Somatic Experiencing® (SE)</h3>
+                    <p style="color: var(--warm-gray); line-height: 1.8; margin-bottom: 1rem;">
+                        Developed by Peter Levine, SE helps discharge trapped survival energy and restore nervous system regulation.
+                    </p>
+                    
+                    <h4 style="color: var(--sage); margin-bottom: 0.75rem;">Core SE Techniques:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                            <strong style="color: var(--deep-teal);">Titration</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.85rem; margin-top: 0.5rem;">Working with small amounts of activation</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
+                            <strong style="color: var(--deep-teal);">Pendulation</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.85rem; margin-top: 0.5rem;">Moving between comfort and discomfort</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💎</div>
+                            <strong style="color: var(--deep-teal);">Resources</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.85rem; margin-top: 0.5rem;">Building islands of safety</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✨</div>
+                            <strong style="color: var(--deep-teal);">Completion</strong>
+                            <p style="color: var(--warm-gray); font-size: 0.85rem; margin-top: 0.5rem;">Allowing interrupted responses to finish</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trauma-Informed Yoga -->
+                <div style="background: linear-gradient(135deg, rgba(244, 160, 156, 0.1) 0%, rgba(255, 248, 231, 0.1) 100%); padding: 2rem; border-radius: 16px;">
+                    <h3 style="color: var(--deep-teal); margin-bottom: 1rem;">🧘 Trauma-Informed Yoga</h3>
+                    <p style="color: var(--warm-gray); line-height: 1.8; margin-bottom: 1rem;">
+                        Emphasizes choice, body awareness, and present-moment experience without triggering trauma responses.
+                    </p>
+                    
+                    <h4 style="color: var(--soft-coral); margin-bottom: 0.75rem;">Key Principles:</h4>
+                    <ul style="color: var(--warm-gray); line-height: 1.8;">
+                        <li>• <strong>Invitational Language:</strong> "When you're ready..." "If it feels okay..."</li>
+                        <li>• <strong>Choice & Agency:</strong> Multiple options for every pose</li>
+                        <li>• <strong>Present-Moment Focus:</strong> Noticing without judging</li>
+                        <li>• <strong>Interoception Building:</strong> Gradual reconnection with body sensations</li>
+                        <li>• <strong>No Physical Adjustments:</strong> Respecting body autonomy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Body Wisdom -->
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">✨</div>
+                    Reconnecting with Body Wisdom
+                </h2>
+                <p style="color: var(--warm-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Your body holds innate wisdom about what it needs to heal and regulate. Through mindful movement, we can rebuild trust with our body's signals.
+                </p>
+                
+                <div style="display: grid; gap: 1rem;">
+                    <div style="padding: 1.5rem; background: rgba(255,248,231,0.5); border-radius: 12px;">
+                        <h4 style="color: var(--deep-teal); margin-bottom: 0.5rem;">🌊 Interoception</h4>
+                        <p style="color: var(--warm-gray);">The ability to sense internal body signals - heartbeat, breath, hunger, emotions</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(177,156,217,0.1); border-radius: 12px;">
+                        <h4 style="color: var(--deep-teal); margin-bottom: 0.5rem;">🎭 Proprioception</h4>
+                        <p style="color: var(--warm-gray);">Awareness of your body's position in space - where you are and how you move</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(135,168,120,0.1); border-radius: 12px;">
+                        <h4 style="color: var(--deep-teal); margin-bottom: 0.5rem;">🤝 Neuroception</h4>
+                        <p style="color: var(--warm-gray);">Your nervous system's automatic detection of safety or threat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+-height: 1.8; margin-bottom: 1.5rem;">
+                    Each station offers a different pathway to embodied awareness. Choose what feels right for your nervous system today.
+                </p>
+                
+                <div class="stations-grid">
+                    <!-- Station 1: Grounding -->
+                    <div class="station-card" onclick="openPractice('grounding')">
+                        <div class="station-header" style="background: var(--gradient-earth);">
+                            <h3>🌍 Grounding & Orienting</h3>
+                            <span class="station-time">5-10 minutes</span>
+                        </div>
+                        <div class="station-body">
+                            <h4>Best For:</h4>
+                            <ul>
+                                <li>Feeling spacey or disconnected</li>
+                                <li>Anxiety or racing thoughts</li>
+                                <li>Starting your practice</li>
+                                <li>Post-trauma activation</li>
+                            </ul>
+                            <p style="color: var(--warm-gray); margin-top: 1rem; font-style: italic;">
+                                "Feel your feet on the earth, remember you are here, you are safe."
+                            </p>
+                            <button class="try-button">Begin Grounding Practice</button>
+                        </div>
+                    </div>
+
+                    <!-- Station 2: Pendulation -->
+                    <div class="station-card" onclick="openPractice('pendulation')">
+                        <div class="station-header" style="background: linear-gradient(135deg, #7BA7BC 0%, #87A878 100%);">
+                            <h3>🌊 Pendulation Practice</h3>
+                            <span class="station-time">10-15 minutes</span>
+                        </div>
+                        <div class="station-body">
+                            <h4>Best For:</h4>
+                            <ul>
+                                <li>Building tolerance for sensation</li>
+                                <li>Working with discomfort</li>
+                                <li>Expanding capacity</li>
+                                <li>Processing difficult emotions</li>
+                            </ul>
+                            <p style="color: var(--warm-gray); margin-top: 1rem; font-style: italic;">
+                                "Notice the rhythm between comfort and discomfort, like waves on the shore."
+                            </p>
+                            <button class="try-button">Explore Pendulation</button>
+                        </div>
+                    </div>
+
+                    <!-- Station 3: Bilateral Movement -->
+                    <div class="station-card" onclick="openPractice('bilateral')">
+                        <div class="station-header" style="background: var(--gradient-warm);">
+                            <h3>🔄 Bilateral Stimulation</h3>
+                            <span class="station-time">8-12 minutes</span>
+                        </div>
+                        <div class="station-body">
+                            <h4>Best For:</h4>
+                            <ul>
+                                <li>Integration after difficult experiences</li>
+                                <li>Calming overwhelm</li>
+                                <li>Improving focus</li>
+                                <li>EMDR preparation</li>
+                            </ul>
+                            <p style="color: var(--warm-gray); margin-top: 1rem; font-style: italic;">
+                                "Cross-lateral movements help your brain hemispheres communicate."
+                            </p>
+                            <button class="try-button">Start Bilateral Movement</button>
+                        </div>
+                    </div>
+
+                    <!-- Station 4: Authentic Movement -->
+                    <div class="station-card" onclick="openPractice('authentic')">
+                        <div class="station-header" style="background: linear-gradient(135deg, #B19CD9 0%, #F4A09C 100%);">
+                            <h3>💫 Authentic Movement</h3>
+                            <span class="station-time">15-20 minutes</span>
+                        </div>
+                        <div class="station-body">
+                            <h4>Best For:</h4>
+                            <ul>
+                                <li>Reconnecting with intuition</li>
+                                <li>Expressing without words</li>
+                                <li>Body image healing</li>
+                                <li>Creative blocks</li>
+                            </ul>
+                            <p style="color: var(--warm-gray); margin-top: 1rem; font-style: italic;">
+                                "Let your body move you, without planning or performing."
+                            </p>
+                            <button class="try-button">Begin Authentic Movement</button>
+                        </div>
+                    </div>
+
+                    <!-- Station 5: Restorative -->
+                    <div class="station-card" onclick="openPractice('restorative')">
+                        <div class="station-header" style="background: linear-gradient(135deg, #87A878 0%, #A8C09A 100%);">
+                            <h3>🌙 Restorative Stillness</h3>
+                            <span class="station-time">10-20 minutes</span>
+                        </div>
+                        <div class="station-body">
+                            <h4>Best For:</h4>
+                            <ul>
+                                <li>Chronic tension</li>
+                                <li>Exhaustion or burnout</li>
+                                <li>Dorsal vagal states</li>
+                                <li>Sleep preparation</li>
+                            </ul>
+                            <p style="color: var(--warm-gray); margin-top: 1rem; font-style: italic;">
+                                "In stillness, your nervous system remembers how to rest."
+                            </p>
+                            <button class="try-button">Enter Restorative Space</button>
+                        </div>
+                    </div>
+
+                    <!-- Station 6: Vocal Toning -->
+                    <div class="station-card" onclick="openPractice('vocal')">
+                        <div class="station-header" style="background: linear-gradient(135deg, #7BA7BC 0%, #93C5FD 100%);">
+                            <h3>🎵 Vocal Toning</h3>
+                            <span class="station-time">5-10 minutes</span>
+                        </div>
+                        <div class="station-body">
+                            <h4>Best For:</h4>
+                            <ul>
+                                <li>Vagus nerve stimulation</li>
+                                <li>Releasing held emotion</li>
+                                <li>Social engagement system</li>
+                                <li>Finding your voice</li>
+                            </ul>
+                            <p style="color: var(--warm-gray); margin-top: 1rem; font-style: italic;">
+                                "Your voice vibrates healing through your entire nervous system."
+                            </p>
+                            <button class="try-button">Begin Vocal Practice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Integration Guide -->
+        <div class="page" id="page2">
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">🌿</div>
+                    Integration & Daily Practice
+                </h2>
+                
+                <div class="tip-box">
+                    <h4>🌅 Morning Regulation Sequence</h4>
+                    <p>Start with 2 minutes of grounding, add gentle bilateral movements, finish with a moment of stillness. Notice your nervous system state before and after.</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>🌙 Evening Wind-Down</h4>
+                    <p>Use restorative practices and gentle vocal toning to signal safety to your nervous system. This prepares your body for restorative sleep.</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>⚡ In-the-Moment Tools</h4>
+                    <p>When activated: Try 5 orienting glances around the room, 3 deep breaths with longer exhales, or gentle bilateral tapping on your thighs.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">📚</div>
+                    Resources & Further Learning
+                </h2>
+                
+                <div class="resource-section">
+                    <h3 style="color: var(--deep-teal); margin-bottom: 1rem;">Recommended Reading</h3>
+                    <div class="resource-grid">
+                        <div class="resource-link">
+                            <strong>The Body Keeps the Score</strong>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Bessel van der Kolk</p>
+                        </div>
+                        <div class="resource-link">
+                            <strong>Waking the Tiger</strong>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Peter Levine</p>
+                        </div>
+                        <div class="resource-link">
+                            <strong>Polyvagal Theory in Therapy</strong>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Deb Dana</p>
+                        </div>
+                        <div class="resource-link">
+                            <strong>The Healing Power of Emotion</strong>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Diana Fosha</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(244,160,156,0.1) 0%, rgba(177,156,217,0.1) 100%); padding: 2rem; border-radius: 16px; margin-top: 2rem;">
+                    <h3 style="color: var(--deep-teal); margin-bottom: 1rem;">🤝 Working with Your Therapist</h3>
+                    <p style="color: var(--warm-gray); line-height: 1.8;">
+                        Share your experiences with these practices in therapy. Notice patterns in which movements feel supportive or challenging. Your therapist can help you understand what your nervous system is communicating and adapt practices to your unique needs.
+                    </p>
+                </div>
+
+                <div class="tip-box" style="margin-top: 2rem;">
+                    <h4>⚠️ Important Reminders</h4>
+                    <ul style="color: var(--warm-gray); line-height: 1.8; margin-top: 0.75rem;">
+                        <li>• Start slowly - your nervous system learns through gentle, repeated experiences</li>
+                        <li>• There's no "wrong" way to move - trust your body's wisdom</li>
+                        <li>• If something doesn't feel right, pause and return to grounding</li>
+                        <li>• These practices complement but don't replace professional treatment</li>
+                        <li>• Honor your body's protective responses - they've kept you safe</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <div class="icon-circle">💝</div>
+                    Self-Compassion in Movement
+                </h2>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(135,168,120,0.05) 0%, rgba(123,167,188,0.05) 100%); border-radius: 16px;">
+                    <p style="font-size: 1.2rem; color: var(--deep-teal); font-style: italic; line-height: 1.8;">
+                        "Your body is not something to be fixed or controlled.<br>
+                        It is a wise companion on your healing journey.<br>
+                        Every sensation is information.<br>
+                        Every movement is valid.<br>
+                        You are already whole."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Modal -->
+    <div id="practiceModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation
+        function showPage(index) {
+            const pages = document.querySelectorAll('.page');
+            const tabs = document.querySelectorAll('.nav-tab');
+            
+            pages.forEach(page => page.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            pages[index].classList.add('active');
+            tabs[index].classList.add('active');
+        }
+
+        // Expand nervous system state
+        function expandState(card, state) {
+            // Remove active from all cards
+            document.querySelectorAll('.state-card').forEach(c => c.classList.remove('active'));
+            // Add active to clicked card
+            card.classList.add('active');
+            
+            // Add ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.borderRadius = '50%';
+            ripple.style.top = '50%';
+            ripple.style.left = '50%';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.animation = 'rippleEffect 0.6s ease-out';
+            
+            if (state === 'ventral') {
+                ripple.style.background = 'rgba(135, 168, 120, 0.5)';
+            } else if (state === 'sympathetic') {
+                ripple.style.background = 'rgba(244, 160, 156, 0.5)';
+            } else {
+                ripple.style.background = 'rgba(123, 167, 188, 0.5)';
+            }
+            
+            card.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                from {
+                    width: 20px;
+                    height: 20px;
+                    opacity: 0.8;
+                }
+                to {
+                    width: 300px;
+                    height: 300px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Open practice modal
+        function openPractice(type) {
+            const modal = document.getElementById('practiceModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            const practices = {
+                grounding: {
+                    title: '🌍 Grounding & Orienting Practice',
+                    content: `
+                        <h3 style="color: var(--deep-teal); margin-bottom: 1.5rem;">Finding Your Foundation</h3>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(135,168,120,0.1) 0%, rgba(139,115,85,0.1) 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--earth); margin-bottom: 1rem;">Step 1: Arrive in Your Body</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• Feel your feet on the floor - wiggle your toes</li>
+                                <li>• Notice your sit bones if seated, or stance if standing</li>
+                                <li>• Gently press your feet down and feel the earth's support</li>
+                                <li>• Take 3 breaths, feeling your body's weight</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(123,167,188,0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--ocean); margin-bottom: 1rem;">Step 2: Orient to Your Space</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• Slowly look around the room</li>
+                                <li>• Name 5 things you can see</li>
+                                <li>• Name 4 things you can touch</li>
+                                <li>• Name 3 things you can hear</li>
+                                <li>• Name 2 things you can smell</li>
+                                <li>• Name 1 thing you can taste</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(177,156,217,0.1); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="color: var(--lavender); margin-bottom: 1rem;">Step 3: Integration</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Place one hand on your heart and one on your belly. Feel the rhythm of your breath. 
+                                Whisper to yourself: "I am here. I am safe. This is now."
+                            </p>
+                        </div>
+                    `
+                },
+                pendulation: {
+                    title: '🌊 Pendulation Practice',
+                    content: `
+                        <h3 style="color: var(--deep-teal); margin-bottom: 1.5rem;">Moving Between Comfort & Discomfort</h3>
+                        
+                        <div style="background: rgba(135,168,120,0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--sage); margin-bottom: 1rem;">Understanding Pendulation</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Pendulation helps your nervous system learn that discomfort is temporary and that you can return to comfort. 
+                                Like a pendulum swinging, we move between sensation and relief.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(123,167,188,0.1) 0%, rgba(135,168,120,0.1) 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--ocean); margin-bottom: 1rem;">The Practice</h4>
+                            <ol style="color: var(--warm-gray); line-height: 2;">
+                                <li><strong>1. Find a comfortable position</strong></li>
+                                <li><strong>2. Scan your body for an area of tension</strong> (just mild discomfort)</li>
+                                <li><strong>3. Notice it fully</strong> - size, shape, quality</li>
+                                <li><strong>4. Now find an area that feels neutral or pleasant</strong></li>
+                                <li><strong>5. Rest your attention there for 30 seconds</strong></li>
+                                <li><strong>6. Gently return to the tension</strong> - has it changed?</li>
+                                <li><strong>7. Continue pendulating</strong> between these areas</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="background: rgba(244,160,156,0.1); padding: 1.5rem; border-radius: 12px;">
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                <strong>Remember:</strong> You're building resilience. Each pendulation teaches your nervous system 
+                                that you can touch discomfort and return to safety.
+                            </p>
+                        </div>
+                    `
+                },
+                bilateral: {
+                    title: '🔄 Bilateral Stimulation Movement',
+                    content: `
+                        <h3 style="color: var(--deep-teal); margin-bottom: 1.5rem;">Cross-Lateral Integration</h3>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(244,160,156,0.1) 0%, rgba(177,156,217,0.1) 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--soft-coral); margin-bottom: 1rem;">Butterfly Hug</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• Cross your arms over your chest</li>
+                                <li>• Hands rest on upper arms or shoulders</li>
+                                <li>• Alternately tap left, right, left, right</li>
+                                <li>• Find a rhythm that feels soothing</li>
+                                <li>• Continue for 1-2 minutes</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(135,168,120,0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--sage); margin-bottom: 1rem;">Cross-Crawl Movement</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• Stand or sit comfortably</li>
+                                <li>• Touch right elbow to left knee</li>
+                                <li>• Return to center</li>
+                                <li>• Touch left elbow to right knee</li>
+                                <li>• Create a gentle marching rhythm</li>
+                                <li>• Focus on crossing the midline</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(123,167,188,0.1); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="color: var(--ocean); margin-bottom: 1rem;">Figure-8 Breathing</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Draw a figure-8 in the air with your finger. Breathe in as you trace one loop, 
+                                breathe out as you trace the other. This combines bilateral movement with breath regulation.
+                            </p>
+                        </div>
+                    `
+                },
+                authentic: {
+                    title: '💫 Authentic Movement Exploration',
+                    content: `
+                        <h3 style="color: var(--deep-teal); margin-bottom: 1.5rem;">Moving from Inner Impulse</h3>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(177,156,217,0.1) 0%, rgba(244,160,156,0.1) 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--lavender); margin-bottom: 1rem;">Preparation</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Find a private space where you won't be interrupted. You may want to play soft music or work in silence. 
+                                There's no right or wrong way to move - only what emerges from within.
+                            </p>
+                        </div>
+                        
+                        <div style="background: rgba(135,168,120,0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--sage); margin-bottom: 1rem;">The Practice</h4>
+                            <ol style="color: var(--warm-gray); line-height: 2;">
+                                <li><strong>Close your eyes</strong> or soften your gaze downward</li>
+                                <li><strong>Begin with stillness</strong> - just breathe and wait</li>
+                                <li><strong>Notice any impulse</strong> to move - however small</li>
+                                <li><strong>Follow that impulse</strong> without planning</li>
+                                <li><strong>Let movement evolve</strong> naturally</li>
+                                <li><strong>When it feels complete</strong>, return to stillness</li>
+                                <li><strong>Open your eyes</strong> when ready</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="background: rgba(244,160,156,0.1); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="color: var(--soft-coral); margin-bottom: 1rem;">Integration Questions</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• What did you notice in your body?</li>
+                                <li>• What emotions or images arose?</li>
+                                <li>• How did it feel to move without planning?</li>
+                                <li>• What does your body want you to know?</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                restorative: {
+                    title: '🌙 Restorative Stillness Practice',
+                    content: `
+                        <h3 style="color: var(--deep-teal); margin-bottom: 1.5rem;">Deep Rest & Restoration</h3>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(135,168,120,0.1) 0%, rgba(168,192,154,0.1) 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--sage); margin-bottom: 1rem;">Supported Rest Position</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Lie down with support under your knees and head. You might place a blanket over yourself for weight and warmth. 
+                                This position signals complete safety to your nervous system.
+                            </p>
+                        </div>
+                        
+                        <div style="background: rgba(123,167,188,0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--ocean); margin-bottom: 1rem;">Progressive Release</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• Start at your feet - let them fall open</li>
+                                <li>• Release your calves into the support</li>
+                                <li>• Let your thighs soften and widen</li>
+                                <li>• Allow your belly to be soft</li>
+                                <li>• Let your shoulders melt down</li>
+                                <li>• Soften your jaw and tongue</li>
+                                <li>• Let your whole body be held</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(177,156,217,0.1); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="color: var(--lavender); margin-bottom: 1rem;">Rest & Digest Breathing</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Breathe naturally, allowing your exhale to be slightly longer than your inhale. 
+                                Perhaps count: In for 4, hold for 2, out for 6. This activates your parasympathetic nervous system.
+                                Rest here for 10-20 minutes.
+                            </p>
+                        </div>
+                    `
+                },
+                vocal: {
+                    title: '🎵 Vocal Toning for Vagus Nerve',
+                    content: `
+                        <h3 style="color: var(--deep-teal); margin-bottom: 1.5rem;">Sound as Medicine</h3>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(123,167,188,0.1) 0%, rgba(147,197,253,0.1) 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--ocean); margin-bottom: 1rem;">Why Vocal Toning Works</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Humming and toning create vibrations that directly stimulate the vagus nerve, 
+                                promoting calm and social connection. Your voice is a built-in regulation tool.
+                            </p>
+                        </div>
+                        
+                        <div style="background: rgba(135,168,120,0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--sage); margin-bottom: 1rem;">Simple Toning Practice</h4>
+                            <ul style="color: var(--warm-gray); line-height: 1.8;">
+                                <li>• <strong>Humming:</strong> Close your lips and hum on one note</li>
+                                <li>• <strong>"Voo" Sound:</strong> Make a low "Voo" sound, feeling it in your chest</li>
+                                <li>• <strong>"Om" or "Aum":</strong> Let the sound resonate through your body</li>
+                                <li>• <strong>Sighing:</strong> Big, audible sighs release tension</li>
+                                <li>• <strong>Singing:</strong> Any gentle singing activates the vagus nerve</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(244,160,156,0.1); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="color: var(--soft-coral); margin-bottom: 1rem;">Brahmari (Bee Breath)</h4>
+                            <p style="color: var(--warm-gray); line-height: 1.8;">
+                                Sit comfortably. Close your eyes. On exhale, make a humming sound like a bee. 
+                                Feel the vibration in your head and chest. Continue for 5-10 breaths. 
+                                Notice the calm that follows.
+                            </p>
+                        </div>
+                    `
+                }
+            };
+            
+            modalBody.innerHTML = `
+                <h2 style="color: var(--deep-teal); margin-bottom: 1.5rem;">${practices[type].title}</h2>
+                ${practices[type].content}
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="closeModal()" style="padding: 0.75rem 2rem; background: var(--gradient-calm); color: white; border: none; border-radius: 30px; font-size: 1rem; font-weight: 600; cursor: pointer;">
+                        Complete Practice
+                    </button>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('practiceModal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('practiceModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Add subtle entrance animations
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeUp 0.6s ease ${index * 0.1}s both`;
+            });
+        });
+    </script>
+</body>
+</html>
